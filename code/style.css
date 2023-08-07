@@ -1,0 +1,32 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1507842217343-583bb727c7a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+    height: auto; 
+    width: 100%; 
+  }
+
+.container{
+    margin-top:10rem;
+}
+
+h1{
+   color : #fff; 
+   border-ottom: solid white;  
+   padding-ottom: 1px;  
+}
+
+input[ype='text'],textarea{
+   width 10% ; 
+  padding: 1px 2px;  
+ margin: 8x 0; 
+  box-sizing border-box  
+  border-adius: 4x; 
+ outlinecolor: gray 
+}
+
+button[type='ubmit']{
+  cursor: pointer;
+  backgroudcolor: green
+  colr white;
+ border-radius:10px
+ border:one;
+}

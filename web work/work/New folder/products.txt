@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Emmanuel Middleman - Products</title>
+    <link rel="stylesheet" type="text/css" href="products-style.css">
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1>Products</h1>
+      
+      <section class="product-category">
+        <h2>Category 1</h2>
+        <ul class="product-list">
+          <li>
+            <h3>Product 1</h3>
+            <p>Description of Product 1</p>
+            <img src="product1.jpg" alt="Product 1">
+            <p>Price: $10</p>
+          </li>
+          <li>
+            <h3>Product 2</h3>
+            <p>Description of Product 2</p>
+            <img src="product2.jpg" alt="Product 2">
+            <p>Price: $20</p>
+          </li>
+        </ul>
+      </section>
+      
+      <section class="product-category">
+        <h2>Category 2</h2>
+        <ul class="product-list">
+          <li>
+            <h3>Product 3</h3>
+            <p>Description of Product 3</p>
+            <img src="product3.jpg" alt="Product 3">
+            <p>Price: $30</p>
+          </li>
+          <li>
+            <h3>Product 4</h3>
+            <p>Description of Product 4</p>
+            <img src="product4.jpg" alt="Product 4">
+            <p>Price: $40</p>
+          </li>
+        </ul>
+      </section>
+      
+      <section class="product-category">
+        <h2>Category 3</h2>
+        <ul class="product-list">
+          <li>
+            <h3>Product 5</h3>
+            <p>Description of Product 5</p>
+            <img src="product5.jpg" alt="Product 5">
+            <p>Price: $50</p>
+          </li>
+          <li>
+            <h3>Product 6</h3>
+            <p>Description of Product 6</p>
+            <img src="product6.jpg" alt="Product 6">
+            <p>Price: $60</p>
+          </li>
+        </ul>
+      </section>
+      
+    </main>
+  </body>
+</html>

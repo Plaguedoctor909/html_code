@@ -1,0 +1,91 @@
+body {
+	background-color: #1c1c1c;
+	color: #fff;
+	font-family: Arial, sans-serif;
+	
+}
+
+header {
+	background-color: #222;
+	padding: 20px;
+}
+
+h1, h2, h3 {
+	color: #0cf;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	color: #0cf;
+}
+@keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+.logo {
+	<! background-color: #222;
+	color: #fff;
+	display: inline-block;
+	margin: 20px;
+	padding: 20px;
+	text-align: center;
+	width: 250px;
+	animation-name: example;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-fill-mode: fowards;
+}
+
+.logo img {
+	max-width: 100%;
+}
+.product {
+	background-color: #222;
+	color: #fff;
+	display: inline-block;
+	margin: 20px;
+	padding: 20px;
+	text-align: center;
+	width: 250px;
+}
+
+.product img {
+	max-width: 100%;
+}
+
+button {
+	
+	background-color: #0cf;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	padding: 10px 20px;
+	transition: background-color 0.2s;
+}
+
+button:hover {
+	background-color: #0077ff;
+}
+
+footer {
+	background-color: #222;
+	color: #fff;
+	padding: 

@@ -1,0 +1,262 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>new website</title>
+    <!-- Include other meta tags and CSS stylesheets here -->
+</head>
+<body>
+    <meta property="og:url" content="{{ product | product_ecom_url(http=True) }}" />
+
+        <meta property="og:image" content="{{ product.images[0].url[2:]}}" />
+    <script src='css/plugins/pikachoose/base.css' | asset_url | stylesheet_tag></script>
+<div class="headline-container">
+    <div class="headline">
+        <div class="container">
+            <div class="row">
+                <div class="header-article col-lg-10 col-lg-offset-1">
+                    <h2 class="heading h-section text-center large-grp" data-barley="shop_main_product_heading" data-barley-editor="simple">The Shop</h2> 
+                    <p id="shop-product-breadcrumb"><a href="/shop/all" data-barley="shop_main_breadcrumb" data-barley-editor="simple">The Shop</a> / {{ product.name }}</p> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="product">
+        <div class="row">
+            <div class="col-sm-5 thumbs">
+                <ul id="thumbs">
+                    {% for img in product.images %}
+                        <li>
+                            {{ product | object_img_tag(index=loop.index0, default_img_path=settings.product_placeholder_img, ref=product.images[loop.index0].url) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-sm-7" itemscope itemtype="http://schema.org/Product">
+                <h2 class="hsecondary-grp" itemprop="name">{{ product.name }}</h2>
+                    <span class="price">{{ min | currency }}</span>
+                    <span class="price">{{ min | currency }} - {{ max | currency }}</span>
+
+                <form action="/cart/add" method="POST" role="form" class="cform" id="product-form">
+
+                    <div class="form-group">
+                        <div class="control-label">{{ variant.name.lstrip() | capitalize }}</div>
+                        <select class="cselect" name="variant:{{ variant.name }}" >
+                            {% for value in variant.values %}
+                            <option value="{{ value.value }}">{{ value.value.lstrip() | capitalize }}</option>
+                        </select>                    
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label">Quantity</div>
+                        <select class="cselect" name="quantity">
+                          
+                            <option>5</option>
+                        </select>                    
+                    </div>
+                    <input type="hidden" name="product_id" value="{{ product.id }}" />
+                    <input type="hidden" name="product_name" value="{{ product.name }}" />           		                  	
+
+                    <div class="out-of-stock"></div>      	
+                    <button type="submit" class="btn btn-success">ADD TO CART</button>
+                </form>
+                <hr />
+                <h4 class="heading" data-barley="shop_product_description" data-barley-editor="simple">Product Description</h4>
+                <p itemprop="description">desc</p>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="product-avg-rating" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                            <span style="display: none;" itemprop="ratingValue">{{ reviews_data.avg_rating | float }}</span>
+                            <span class="product-rating" data-score="{{ reviews_data.avg_rating | float}}"></span>
+                            <span itemprop="ratingCount">20 words</span> reviews
+                        </div>
+                        <a href="#write-a-review" class="btn btn-success">Write a Review</a>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <h4 class="heading" data-barley="shop_product_social" data-barley-editor="simple">Share this product</h4>
+                        <div>
+                            <span class="fb-share-button" data-layout="button_count"></span>
+                            <span>
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ product | product_ecom_url(http=True) }}" data-text="Check out {{product.name}}!">Tweet</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            </span>
+                            <span class="pinterest-share-button">
+                                <a href="//www.pinterest.com/pin/create/button/?url={{ product | product_ecom_url(http=True) }}&amp;{%if product.images%}media={{ product.images[0].url[2:]}}&amp;{%endif%}description=Next%20stop%3A%20Pinterest" data-pin-do="buttonPin" data-pin-config="beside" data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" /></a>
+                                <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="product-reviews-list-row" class="row">
+            <div class="col-xs-12">
+                <h3 class="heading product-reviews-list-heading">{{ reviews_data.copy_settings.review_headline }}</h3>
+            </div>
+
+                <div class="product-review-empty col-xs-12">
+ 
+                </div>
+ 
+
+            {% for review in reviews_data.reviews %}
+            <div class="col-xs-12 product-review">
+                <div class="product-review-info">
+                    <div class="product-review-meta">{{ review.meta_string }}</div>
+                    <div class="product-review-rating product-rating" data-score="{{ review.rating }}"></div>
+                </div>
+
+                <div class="product-review-content">
+                    <h4 class="product-review-title">{{ review.title }}</h4>
+                    <p class="product-review-body">{{ review.body }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% if reviews_data.addl_reviews %}
+            <div class="col-xs-12">
+                <a id="reviews-show-more" href="#reviews-show-more">Show More</a>
+            </div>
+            {% endif %}
+        </div>
+
+        <div id="write-a-review" class="row">
+            <div class="col-xs-12">
+                <h3 class="write-review-heading">{{ reviews_data.copy_settings.review_form_header }}</h3>
+
+                {% set messages = get_flashed_messages(with_categories=True, category_filter=['review_success']) %}
+                {% if messages %}
+                    {% set message = messages[0][1] %}
+                    <div class="write-review-message">
+                        {{ reviews_data.copy_settings.review_form_success }} {{ message|safe }}
+                    </div>
+                {% elif reviews_data.write_disabled %}
+                    <div class="write-review-message">
+                        {% if reviews_data.disabled_reason == 'login' %}
+                            You must <a href="/customer/login">login</a> before writing a review.
+                        {% elif reviews_data.disabled_reason == 'duplicate' %}
+                            You have already submitted a review for this product.
+                        {% else %}
+                            Writing a review has been temporarily disabled.
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <form action="/shop/product_review/{{ product.id }}" method="POST" class="form-horizontal">
+                        <div class="write-review-rating-row">
+                            <span class="write-review-rating-label">
+                                How would you rate this product?
+                            </span>
+                            <span id="write-review-rating"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input type="text" class="form-control input-lg write-review-title" name="review_title" id="review-title" placeholder="{{ reviews_data.copy_settings.review_form_title }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <textarea rows="5" class="form-control write-review-body" name="review_body" placeholder="{{ reviews_data.copy_settings.review_form_body }}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>       
+</div>
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/jquery.pikachoose.min.js' | asset_url }}"></script>
+
+{% if reviews_data %}
+<script src="{{ 'js/bower_components/raty/lib/jquery.raty.js' | global_asset_url | javascript_tag }}"></script>
+{% endif %}
+
+<script>
+window.cur_product = {{ product.json() | safe }};
+
+$(document).ready(function() {
+    var product = {{ product.json() | safe }};
+    $("#product-form select[name^='variant'], #product-form select[name^='quantity']").on("change", function() {
+        var variants = {};
+        $("#product-form select[name^='variant']").each(function(el) {
+            variants[$(this).attr("name").split(':')[1]] = $(this).val();
+        });
+        var instance = match_variants_instance(product, variants);
+
+        // Set price to current instance price
+        $(".product .price").text(window.currency + (instance.price / 100.0).toFixed(2));
+        check_out_of_stock(instance);
+    });
+    if (product.instances.length == 1) {
+        check_out_of_stock(product.instances[0]);
+    } else {
+        $("#product-form select[name^='variant']").change();
+    }
+
+    function match_variants_instance(product, selected_variants) {
+        var matched_instance = false;
+        $.each(product.instances, function(i, instance) {
+            var variants_match = true;
+            $.each(instance.variants, function(i, variant) {
+                if (variant.variant_value.value != selected_variants[variant.variant_type.name]) {
+                    variants_match = false;
+                    return false;
+                }
+            });
+            if (variants_match === true) {
+                matched_instance = instance;
+                return false;
+            }
+        });
+        return matched_instance;
+    }
+
+    function check_out_of_stock(instance) {
+        var selected_quantity = parseInt($("#product-form select[name^='quantity']").val());
+        if (instance === false || (instance.inventory.out_of_stock_purchases === false && instance.inventory.quantity_on_hand <= 0)) {
+            $("#product-form .out-of-stock").html("Out Of Stock!");
+            $('#product-form :submit').attr('disabled', 'disabled');
+        } else if (selected_quantity > instance.inventory.quantity_on_hand && instance.inventory.out_of_stock_purchases === false) {
+            $("#product-form .out-of-stock").html("Sorry, there are only " + instance.inventory.quantity_on_hand + " left in stock!");
+            $('#product-form :submit').attr('disabled', 'disabled');
+        } else {
+            $("#product-form .out-of-stock").html("");
+            $('#product-form :submit').removeAttr('disabled');
+        }
+    }
+
+    {% if reviews_data %}
+    jQuery('.product-rating').raty({
+        score: function() {
+            return jQuery(this).attr('data-score');
+        },
+        readOnly: true,
+        starType: 'i',
+        hints: null
+    });
+    {% endif %}
+
+    jQuery('#write-review-rating').raty({
+        scoreName: 'review_rating',
+        starType: 'i',
+        hints: null
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up - Main Store Front</title>
+  <link rel="stylesheet" href="style sheet for drawer.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="dropdown">
+        <div class="dropdown-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="dropdown-content">
+          <ul>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="special-order.html">Special Order</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="signup">
+    <h1>Sign Up</h1>
+    <form class="signup-form">
+      <input type="email" placeholder="Email" required>
+      <label class="switch" for="toggle-google">
+        <input type="checkbox" id="toggle-google" name="signup-method" checked>
+        <span class="slider"></span>
+      </label>
+      <label for="toggle-google">Google</label>
+      <label class="switch" for="toggle-phone">
+        <input type="checkbox" id="toggle-phone" name="signup-method">
+        <span class="slider"></span>
+      </label>
+      <label for="toggle-phone">Phone Number</label>
+      <button type="submit">Sign Up</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Your Store. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="new.js"></script>
+  <h2>Toggle 'em</h2>
+<ul class="tg-list">
+  <li class="tg-list-item">
+    <h4>Light</h4>
+    <input class="tgl tgl-light" id="cb1" type="checkbox"/>
+    <label class="tgl-btn" for="cb1"></label>
+  </li>
+  <li class="tg-list-item">
+    <h4>iOS</h4>
+    <input class="tgl tgl-ios" id="cb2" type="checkbox"/>
+    <label class="tgl-btn" for="cb2"></label>
+  </li>
+  <li class="tg-list-item">
+    <h4>Skewed</h4>
+    <input class="tgl tgl-skewed" id="cb3" type="checkbox"/>
+    <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="cb3"></label>
+  </li>
+  <li class="tg-list-item">
+    <h4>Flat</h4>
+    <input class="tgl tgl-flat" id="cb4" type="checkbox"/>
+    <label class="tgl-btn" for="cb4"></label>
+  </li>
+  <li class="tg-list-item">
+    <h4>Flip</h4>
+    <input class="tgl tgl-flip" id="cb5" type="checkbox"/>
+    <label class="tgl-btn" data-tg-off="Nope" data-tg-on="Yeah!" for="cb5"></label>
+  </li>
+</ul>
+</body>
+</html>

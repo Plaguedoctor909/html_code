@@ -1,0 +1,86 @@
+/* Global styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1, h2, h3 {
+    margin: 0;
+  }
+  
+  nav {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  nav .dropdown-icon {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  nav .dropdown-icon span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 20px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown-content form {
+    margin-bottom: 10px;
+  }
+  
+  .dropdown-content form input[type="email"],
+  .dropdown-content form input[type="text"],
+  .dropdown-content form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .dropdown-content form button {
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .carousel-wrapper {
+    margin: 20px 0;
+  }
+  
+  .owl-carousel .item {
+    background-color: #f9f9f9;
+    color: #333333;
+    padding: 20px;
+    border-radius: 4px;
+  }
+  
+  #products, #about, #contact {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  footer {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+  }
+  
